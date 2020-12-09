@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 let studentArr = require("./InitialData");
 const studentArray = require("./InitialData");
-const port = 3000;
+const port = 8080;
 app.use(express.urlencoded());
 
 // Parse JSON bodies (as sent by API clients)
