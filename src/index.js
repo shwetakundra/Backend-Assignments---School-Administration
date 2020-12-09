@@ -40,28 +40,32 @@ app.get("/api/student/:id", (req, res) => {
 
         }
   })
-  app.put('./api/sudent/:id',(req,res)=>{
+  app.put('/api/student/:id',(req,res)=>{
     const idToSearch=req.params.id
     const update=req.body
     const {name,currentClass,division}=update
     const matchedIdx=studentArray.findIndex((student)=>student.id===Number(idToSearch))
     if(matchedIdx===-1){
         res.sendStatus(400)
-    }else{
-        if(isNullOrUndefined(name) && isNullOrUndefined(currentClass) && isNullOrUndefined(division)){
+    }
+    else{
+        if(
+            isNullOrUndefined(name) && 
+            isNullOrUndefined(currentClass) && 
+            isNullOrUndefined(division)){
             res.sendStatus(400)
         }
         else{
             if(!isNullOrUndefined(name)){
-                studentArray[matchedIdx].name=Number(name)
+                studentArray[matchedIdx].name=name
             }
             if(!isNullOrUndefined(currentClass)){
             studentArray[matchedIdx].currentClass=Number(currentClass)
-           }if(!isNullOrUndefined(division)){
+           }
+           if(!isNullOrUndefined(division)){
             studentArray[matchedIdx].division=division
-            res.sendStatus(200)
         }
-        res.sendStatus(400)
+        res.sendStatus(200)
         }
     }
   })
